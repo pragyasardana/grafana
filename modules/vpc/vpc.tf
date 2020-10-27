@@ -6,19 +6,19 @@ resource "aws_vpc" "grafana_vpc" {
 data "aws_availability_zones" "available" {}
 
 resource "aws_subnet" "grafana_public_subnet" {
-  count = length(data.aws_availability_zones.available.names)
-  vpc_id     = aws_vpc.grafana_vpc.id
-  cidr_block = "10.0.${10+count.index}.0/24"
+  count                   = length(data.aws_availability_zones.available.names)
+  vpc_id                  = aws_vpc.grafana_vpc.id
+  cidr_block              = "10.0.${10 + count.index}.0/24"
   map_public_ip_on_launch = true
-  availability_zone = data.aws_availability_zones.available.names[count.index]
+  availability_zone       = data.aws_availability_zones.available.names[count.index]
 }
 
 resource "aws_subnet" "grafana_private_subnet" {
-  count = length(data.aws_availability_zones.available.names)
-  vpc_id     = aws_vpc.grafana_vpc.id
-  cidr_block = "10.0.${20+count.index}.0/24"
+  count                   = length(data.aws_availability_zones.available.names)
+  vpc_id                  = aws_vpc.grafana_vpc.id
+  cidr_block              = "10.0.${20 + count.index}.0/24"
   map_public_ip_on_launch = false
-  availability_zone = data.aws_availability_zones.available.names[count.index]
+  availability_zone       = data.aws_availability_zones.available.names[count.index]
 }
 
 resource "aws_db_subnet_group" "grafana_rds_subnet_group" {
@@ -34,7 +34,7 @@ resource "aws_route_table" "grafana_internet_access" {
   vpc_id = aws_vpc.grafana_vpc.id
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id             = aws_internet_gateway.grafana_gateway.id
+    gateway_id = aws_internet_gateway.grafana_gateway.id
   }
 }
 

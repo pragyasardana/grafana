@@ -1,6 +1,6 @@
 # Provisioning the grafana RDS Instance
 
-This module provisions an RDS postgres Database for hosting the Grafana Data along with its Security groups in a provided VPC subnet group. 
+This module provisions an RDS postgres Database for hosting the Grafana Data along with its Security groups in a provided VPC subnet group.
 
 ## Key Parameters
 
@@ -16,6 +16,6 @@ This module provisions an RDS postgres Database for hosting the Grafana Data alo
 
 ## Outputs
 * `rds_address` FQDN for the RDS instnace
-* `rds_master_password` Master password for the database. 
+* `rds_master_password` Master password for the database.
 * `rds_db_name` RDS Database Name
 * `rds_db_username` RDS Username

@@ -1,6 +1,6 @@
 resource "aws_security_group" "grafana_alb_sg" {
-  name        = "grafana_alb_sg"
-  vpc_id      = var.vpc_id
+  name   = "grafana_alb_sg"
+  vpc_id = var.vpc_id
 
   ingress {
     from_port   = 80

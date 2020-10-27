@@ -11,7 +11,7 @@ export GRADANA_DOMAIN_NAME=${grafana_domanin}
 
 func_apt(){
     apt update
-    apt install -y python3 
+    apt install -y python3
 }
 
 func_yum(){
@@ -33,9 +33,9 @@ run_ansible(){
 }
 
 main(){
-    if [[ -x "$(which apt)" ]] ; then 
+    if [[ -x "$(which apt)" ]] ; then
         func_apt
-    elif [[ -x "$(which yum)" ]] ; then 
+    elif [[ -x "$(which yum)" ]] ; then
         func_yum
     fi
     install_deps
