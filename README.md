@@ -3,11 +3,11 @@
 This terraform script provisions grafana on AWS. 
 
 
-## Assumptions
+## Prerequisites 
 * Provisioning can only be done for Ubuntu, CentOS and Amazon Linux
 * Terraform Version should be grater than `>= 0.13.5`
 
-## Variables
+## Key Parameters
 * `aws_region` AWS region to deploy the stack to. Defaults to `us-east-1`
 * `db_instance_size` Instance size of the DB. Defaults to `db.t2.micro`
 * `db_name` Name of the database to be created and used for the application. Defaults to `grafana`

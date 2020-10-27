@@ -2,7 +2,7 @@
 
 This module provisions an autoscaling group for Grafana instance along with the S3 bucket and apropriate IAM roles to access the S3 Bucket for pulling ansible code and provisioning the applicaiton on a new instnaces. 
 
-## variables
+## Key Parameters
 
 * `aws_region` AWS region to provision the ALB in. Default `us-east-1`
 * `vpc_id` **Required** VPC ID of the vpc to provision the ALB in

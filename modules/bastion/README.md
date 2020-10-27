@@ -2,7 +2,7 @@
 
 This module provisions a bastion instance on the Public subnet provided with all the appropriate security groups for accessing the private host
 
-## variables
+## Key Parameters
 
 * `aws_region` AWS region to provision the ALB in. Default `us-east-1`
 * `vpc_id` **Required** VPC ID of the vpc to provision the ALB in

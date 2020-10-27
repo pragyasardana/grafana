@@ -2,7 +2,7 @@
 
 This ansible playbook will configure grafana on Ubuntu, CentOS and Amazon Linux
 
-## Variables
+## Key Parameters
 ### Role Grafana
 * `grafana_port` Port to run grafana on. Defaults to `3000`
 * `grafana_domanin` Base URL for Grafana. Defaults to `grafana.example.com`
@@ -18,7 +18,7 @@ This ansible playbook will configure grafana on Ubuntu, CentOS and Amazon Linux
 
 ## Running the playbook. 
 
-### Assumptions
+### Prerequisites
 * You have already provisioned a postgresql database open on port 5432 and have the following details handy 
   * FQDN of the datbase
   * Database User

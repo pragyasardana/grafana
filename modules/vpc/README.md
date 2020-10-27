@@ -2,7 +2,7 @@
 
 This module provisions the VPC with public and private subnet's in all its availability zones for hosting the components of the application.
 
-## Variables
+## Key Parameters
 * `aws_region` **Required** AWS region to provision the ALB in. Default `us-east-1`
 
 

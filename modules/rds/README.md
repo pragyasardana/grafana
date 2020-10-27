@@ -2,7 +2,7 @@
 
 This module provisions an RDS postgres Database for hosting the Grafana Data along with its Security groups in a provided VPC subnet group. 
 
-## variables
+## Key Parameters
 
 * `aws_region` AWS region to provision the ALB in. Default `us-east-1`
 * `vpc_id` **Required** VPC ID of the vpc to provision the ALB in
