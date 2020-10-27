@@ -1,0 +1,8 @@
+---
+grafana_db_host: "{{ lookup ('env', 'GRAFANA_DB_HOST')}}"
+grafana_db_password: "{{ lookup ('env', 'GRAFANA_DB_PASSWORD')}}"
+grafana_default_password: "{{ lookup ('env', 'GRAFANA_DEFAULT_ADMIN_PASSWORD')}}"
+grafana_secret_key: "{{ lookup ('env', 'GRAFANA_DEFAULT_SECRET_KEY')}}"
+grafana_db_name: "{{ lookup ('env', 'GRADANA_DB_NAME')}}"
+grafana_db_user: "{{ lookup ('env', 'GRADANA_DB_USERNAME')}}"
+grafana_domain: "{{ lookup ('env', 'GRADANA_DOMAIN_NAME')}}"

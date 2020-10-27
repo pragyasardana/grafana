@@ -1,0 +1,12 @@
+---
+grafana_port: 3000
+grafana_domain: grafana.example.com
+grafana_db_type: postgres
+grafana_db_host: 127.0.0.1
+grafana_db_port: 5432
+grafana_db_name: grafana
+grafana_db_user: grafanauser
+grafana_db_password: "{{ lookup('password', inventory_dir + '/passwords/grafana/postgres length=10 chars=ascii_letters,digits') }}"
+grafana_enable_sql_logging: false
+grafana_secret_key: "{{ lookup('password', inventory_dir + '/passwords/grafana/secret_key length=10 chars=ascii_letters,digits') }}"
+grafana_default_password: "{{ lookup('password', inventory_dir + '/passwords/grafana/admin length=10 chars=ascii_letters,digits') }}"
