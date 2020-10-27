@@ -1,0 +1,49 @@
+---
+- name: Install distro-specific prerequisites
+  include_tasks: "{{ ansible_distribution|lower }}.yml"
+
+- name: Install Grafana
+  package:
+    name: grafana
+  notify: 
+    - Restart Grafana
+
+- name: edit grafana config to set server parameters
+  ini_file:
+    path: /etc/grafana/grafana.ini
+    section: server
+    option: "{{ item.key }}"
+    value: "{{ item.value }}"
+    backup: yes
+  with_dict: 
+    - http_port: "{{ grafana_port }}"
+    - domain: "{{ grafana_domain }}"
+
+- name: edit grafana config to set db parameters
+  ini_file: 
+    path: /etc/grafana/grafana.ini
+    section: database
+    option: "{{ item.key }}"
+    value: "{{ item.value }}"
+    backup: no
+  with_dict:
+    - type: "{{ grafana_db_type }}"
+    - host: "{{ grafana_db_host }}:{{ grafana_db_port }}"
+    - name: "{{ grafana_db_name }}"
+    - user: "{{ grafana_db_user }}"
+    - password: "{{ grafana_db_password }}"
+  notify: 
+    - Restart Grafana
+
+- name: edit grafana config to set initial admin user parameters
+  ini_file: 
+    path: /etc/grafana/grafana.ini
+    section: security
+    option: "{{ item.key }}"
+    value: "{{ item.value }}"
+    backup: no
+  with_dict:
+    - admin_password: "{{ grafana_default_password }}"
+    - secret_key: "{{ grafana_secret_key }}"
+  notify: 
+    - Restart Grafana

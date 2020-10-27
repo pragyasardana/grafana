@@ -1,0 +1,19 @@
+---
+- name: add Grafana Repo
+  copy: 
+    src: grafana.repo
+    dest: /etc/yum.repos.d/grafana.repo
+
+- name: install dependencies for managing SELinux via ansible
+  yum:
+    name: 
+      - python3-libselinux
+      - python3-policycoreutils
+    state: present
+
+- name: allow selinux for connection
+  seport:  
+    ports: 3000
+    proto: tcp
+    setype: http_port_t
+    state: present

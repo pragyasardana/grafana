@@ -1,0 +1,5 @@
+---
+- name: add Grafana Repo
+  copy: 
+    src: grafana.repo
+    dest: /etc/yum.repos.d/grafana.repo

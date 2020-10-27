@@ -1,0 +1,46 @@
+#!/bin/bash
+set -ex
+
+export GRAFANA_DB_HOST=${rds_address}
+export GRAFANA_DB_PASSWORD=${grafana_db_password}
+export GRAFANA_DEFAULT_ADMIN_PASSWORD=${grafana_admin_password}
+export GRAFANA_DEFAULT_SECRET_KEY=${grafana_secret_key}
+export GRADANA_DB_USERNAME=${grafana_db_username}
+export GRADANA_DB_NAME=${grafana_db_name}
+export GRADANA_DOMAIN_NAME=${grafana_domanin}
+
+func_apt(){
+    apt update
+    apt install -y python3 
+}
+
+func_yum(){
+    yum install -y python3 wget
+}
+
+install_deps(){
+    wget -O - https://bootstrap.pypa.io/get-pip.py | python3
+    /usr/local/bin/pip3 install ansible awscli
+}
+
+download_script(){
+    /usr/local/bin/aws s3 sync s3://${bucket_name}/ /tmp/
+}
+
+run_ansible(){
+    cd /tmp/ansible
+    ansible-playbook -i 'localhost,' -c local playbook.yml
+}
+
+main(){
+    if [[ -x "$(which apt)" ]] ; then 
+        func_apt
+    elif [[ -x "$(which yum)" ]] ; then 
+        func_yum
+    fi
+    install_deps
+    download_script
+    run_ansible
+}
+
+main
